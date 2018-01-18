@@ -3,6 +3,7 @@ package unifi
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net"
 	"time"
 )
@@ -47,9 +48,10 @@ func (a *Alarm) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
+	// Attempt to get a HardwareAddress from the alarm
 	mac, err := net.ParseMAC(al.AP)
 	if err != nil {
-		return err
+		log.Print(err)
 	}
 
 	t, err := time.Parse(time.RFC3339, al.DateTime)

@@ -82,11 +82,6 @@ func TestAlarmUnmarshalJSON(t *testing.T) {
 			err:  errors.New("invalid character"),
 		},
 		{
-			desc: "invalid APMAC",
-			b:    []byte(`{"ap":"foo"}`),
-			err:  errors.New("invalid MAC address"),
-		},
-		{
 			desc: "invalid DateTime",
 			b:    []byte(`{"ap":"de:ad:be:ef:de:ad","datetime":"foo"}`),
 			err:  errors.New("parsing time"),
